@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:i_clinic/core/const/Routes.dart';
 import 'package:i_clinic/core/const/app_color.dart';
+import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 
 class Onboarding3Screen extends StatelessWidget {
   const Onboarding3Screen({super.key});
@@ -121,7 +124,8 @@ class Onboarding3Screen extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                
+                Navigator.pushReplacementNamed(context, Routes.homeScreen);
+                context.read<OnboardingCubit>().notNew();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

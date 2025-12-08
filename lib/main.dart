@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:i_clinic/features/onboarding/presentation/onboarding1_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_clinic/core/const/Routes.dart';
+import 'package:i_clinic/features/Home/home_screen.dart';
+import 'package:i_clinic/features/onboarding/data/onboarding_repository_impl.dart';
+import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
+import 'package:i_clinic/features/onboarding/presentation/screens/onboarding1_screen.dart';
 
 void main() {
-  runApp(const MainApp());
-}
+  runApp(
+     MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => OnboardingCubit(OnboardingRepositoryImpl())),
+        
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+        routes: {
+          Routes.onboarding: (context) => Onboarding1Screen(),
+          Routes.homeScreen: (context) => HomeScreen(),
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Onboarding1Screen(),
-    );
-  }
+        },
+        home: Onboarding1Screen(),
+      ),
+    ),
+  );
 }

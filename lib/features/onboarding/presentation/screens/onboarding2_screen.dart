@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
-import 'package:i_clinic/features/onboarding/presentation/onboarding3_screen.dart';
+import 'package:i_clinic/features/onboarding/presentation/screens/onboarding3_screen.dart';
 
 class Onboarding2Screen extends StatelessWidget {
   const Onboarding2Screen({super.key});
