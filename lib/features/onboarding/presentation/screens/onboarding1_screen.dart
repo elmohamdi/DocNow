@@ -24,17 +24,18 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
-      builder: (context, state) {
+    return BlocConsumer<OnboardingCubit, OnboardingState>(
+      listener: (context, state) {
         if (state is OnboardingInitial) {
-          return Center(child: CircularProgressIndicator());
+          Center(child: CircularProgressIndicator());
         } else if (state is OnboardingError) {
-          return Center(child: Text('Error: ${state.message}'));
+          Center(child: Text('Error: ${state.message}'));
         } else if (state is userIsNotNew) {
-            Navigator.pushReplacementNamed(context, Routes.homeScreen);
-
-          return Container();
-        } else if (state is userIsNew) {
+          Navigator.pushReplacementNamed(context, Routes.homeScreen);
+        }
+      },
+      builder: (context, state) {
+        if (state is userIsNew) {
           return Scaffold(
             body: Padding(
               padding: const EdgeInsets.only(
