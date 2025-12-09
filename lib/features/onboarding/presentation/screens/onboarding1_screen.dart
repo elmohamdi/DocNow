@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:i_clinic/core/const/Routes.dart';
 import 'package:i_clinic/core/const/app_color.dart';
+import 'package:i_clinic/core/routes/routes.dart';
+import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_state.dart';
 import 'package:i_clinic/features/onboarding/presentation/screens/onboarding2_screen.dart';
@@ -24,23 +25,23 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
-      builder: (context, state) {
+    return BlocConsumer<OnboardingCubit, OnboardingState>(
+      listener: (context, state) {
         if (state is OnboardingInitial) {
-          return Center(child: CircularProgressIndicator());
+           Center(child: CircularProgressIndicator());
         } else if (state is OnboardingError) {
-          return Center(child: Text('Error: ${state.message}'));
+           Center(child: Text('Error: ${state.message}'));
         } else if (state is userIsNotNew) {
-            Navigator.pushReplacementNamed(context, Routes.homeScreen);
-
-          return Container();
-        } else if (state is userIsNew) {
+          Navigator.pushReplacementNamed(context, Routes.homeScreen);
+        }
+      },
+      builder: (context, state) {
+        if (state is userIsNew) {
           return Scaffold(
             body: Padding(
-              padding: const EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                top: 32.0,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 48.0,
               ),
               child: Column(
                 children: [
@@ -62,7 +63,10 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
                             borderRadius: BorderRadius.circular(12),
                             side: BorderSide(color: AppColor.main),
                           ),
-                          fixedSize: Size(106, 48),
+                          fixedSize: Size(
+                            context.width * 0.28,
+                            context.height * 0.06,
+                          ),
                         ),
                         child: Text(
                           'Skip',
@@ -75,11 +79,11 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 32),
+                  SizedBox(height: context.height * 0.06),
 
                   SvgPicture.asset('assets/images/onboarding1.svg'),
 
-                  SizedBox(height: 32),
+                  SizedBox(height: context.height * 0.06),
 
                   Text(
                     'Book Appointments Easily',
@@ -90,7 +94,7 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
                     ),
                   ),
 
-                  SizedBox(height: 16),
+                  SizedBox(height: context.height * 0.02),
 
                   Text(
                     'No more waiting on calls',
@@ -104,7 +108,7 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
                     textAlign: TextAlign.center,
                   ),
 
-                  SizedBox(height: 74),
+                  SizedBox(height: context.height * 0.07),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -122,7 +126,10 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          fixedSize: Size(106, 48),
+                          fixedSize: Size(
+                            context.width * 0.28,
+                            context.height * 0.06,
+                          ),
                           backgroundColor: AppColor.main,
                         ),
                         child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
+import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/features/onboarding/presentation/screens/onboarding3_screen.dart';
 
 class Onboarding2Screen extends StatelessWidget {
@@ -10,71 +11,65 @@ class Onboarding2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 32.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 48.0),
         child: Column(
           children: [
+            Row(children: [SvgPicture.asset('assets/images/logo2.svg')]),
 
-            Row(
-              children: [
-                SvgPicture.asset('assets/images/logo2.svg'),               
-              ],
-            ),
-
-            SizedBox(height: 32),
+            SizedBox(height: context.height * 0.06),
 
             SvgPicture.asset('assets/images/onboarding2.svg'),
 
-            SizedBox(height: 32),
+            SizedBox(height: context.height * 0.06),
 
             Text(
               'Stay Organized',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: AppColor.main
-              )
+                color: AppColor.main,
+              ),
             ),
 
-            SizedBox(height: 16),
+            SizedBox(height: context.height * 0.02),
 
             Text(
               'Get automatic reminders so you never miss your appointment',
-              style: TextStyle(
-                fontSize: 16,
-                color: AppColor.black,  
-              ),
+              style: TextStyle(fontSize: 16, color: AppColor.black),
               textAlign: TextAlign.center,
             ),
 
-
-            SizedBox(height: 74),
+            SizedBox(height: context.height * 0.07),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
-                      side : BorderSide(color: AppColor.main)
+                      side: BorderSide(color: AppColor.main),
                     ),
-                    fixedSize: Size(106, 48)
+                    fixedSize: Size(
+                      context.width * 0.28,
+                      context.height * 0.06,
+                    ),
                   ),
                   child: Text(
                     'Back',
                     style: TextStyle(
                       color: AppColor.black,
                       fontSize: 16,
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),
-                    ) 
                   ),
+                ),
 
                 ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -86,20 +81,23 @@ class Onboarding2Screen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    fixedSize: Size(106, 48),
-                    backgroundColor: AppColor.main
+                    fixedSize: Size(
+                      context.width * 0.28,
+                      context.height * 0.06,
+                    ),
+                    backgroundColor: AppColor.main,
                   ),
                   child: Text(
                     'Next',
                     style: TextStyle(
                       color: AppColor.white,
                       fontSize: 16,
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.w500,
                     ),
-                  )
-                ),       
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
