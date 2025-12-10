@@ -12,6 +12,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_native_splash: ^2.4.7
   flutter_svg: ^2.2.3
+  liquid_navbar: ^2.0.7
   shared_preferences: ^2.5.3
 
 dev_dependencies:
@@ -24,10 +25,12 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
 flutter_native_splash:
   image: assets/images/logo.png
-  background_image: assets/images/gradient_background.png
+  color: "#2585EC"
+  #background_image: assets/images/gradient_background.png
   android: true
   ios: true
   web: false
