@@ -7,5 +7,6 @@ class Routes {
   static String mainScreen = '/main_screen';
   static String profileScreen = '/profile';
   static String transactionsScreen = '/transactions';
+  static String doctorProfileScreen = '/doctor_profile';
 
 }

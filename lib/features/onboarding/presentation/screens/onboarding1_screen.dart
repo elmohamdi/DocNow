@@ -39,7 +39,7 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
         if (state is userIsNew) {
           return Scaffold(
             body: Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 horizontal: 16.0,
                 vertical: 48.0,
               ),

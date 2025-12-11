@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_clinic/core/const/app_color.dart';
+import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/core/utils/helper.dart';
 
 
@@ -61,7 +62,9 @@ class TopDoctor extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.doctorProfileScreen);
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
