@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
-import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/features/Home/presentation/widgets/top_doctor.dart';
 import 'package:i_clinic/features/search/search_screen.dart';
