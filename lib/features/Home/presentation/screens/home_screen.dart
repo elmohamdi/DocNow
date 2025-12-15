@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColor.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 48.0),
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.04, vertical: context.height * 0.06),
           child: Column(
             children: [
               Align(
@@ -86,9 +86,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 16.0,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.width * 0.04 ,
+                    vertical: context.height * 0.02,
                   ),
                   child: Row(
                     children: [
@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(width: context.width * 0.1),
+                      SizedBox(width: context.width * 0.09),
 
                       SizedBox(
                         width: context.width * 0.25,

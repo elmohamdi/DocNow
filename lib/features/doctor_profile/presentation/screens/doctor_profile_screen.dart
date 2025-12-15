@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
 import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/features/doctor_profile/presentation/widgets/book_date.dart';
+import 'package:i_clinic/features/doctor_profile/presentation/widgets/call_id.dart';
 import 'package:i_clinic/features/doctor_profile/presentation/widgets/doctor_detail.dart';
 
 class DoctorProfileScreen extends StatelessWidget {
@@ -96,7 +97,16 @@ class DoctorProfileScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.center,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return Callid();
+                                  },
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.main,
                               shape: CircleBorder(),
