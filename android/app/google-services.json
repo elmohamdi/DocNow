@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617963806726",
+    "project_id": "docnow-2ab41",
+    "storage_bucket": "docnow-2ab41.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617963806726:android:e420b1407fcafe6dca6387",
+        "android_client_info": {
+          "package_name": "com.example.i_clinic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKdw9odsF_z_sFQQEnEn48ygsu1axHI8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
