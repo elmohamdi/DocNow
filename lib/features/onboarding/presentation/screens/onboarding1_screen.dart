@@ -32,7 +32,7 @@ class _Onboarding1ScreenState extends State<Onboarding1Screen> {
         } else if (state is OnboardingError) {
            Center(child: Text('Error: ${state.message}'));
         } else if (state is userIsNotNew) {
-          Navigator.pushReplacementNamed(context, Routes.homeScreen);
+          Navigator.pushReplacementNamed(context, Routes.signIn);
         }
       },
       builder: (context, state) {

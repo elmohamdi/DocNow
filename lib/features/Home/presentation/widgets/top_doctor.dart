@@ -37,7 +37,7 @@ class TopDoctor extends StatelessWidget {
           children: [
             Image.asset(imageUrl),
             Text(
-              name,
+              "Dr.${name}",
               style: TextStyle(
                 fontSize: 16,
                 color: AppColor.black,

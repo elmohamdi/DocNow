@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_clinic/features/Home/data/home_repository_impl.dart';
+import 'package:i_clinic/features/Home/presentation/cubit/home_cubit.dart';
 import 'package:i_clinic/features/auth/presentation/auth_injection.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:i_clinic/features/auth/presentation/screens/signin_screen.dart';
@@ -34,9 +36,10 @@ class MyApp extends StatelessWidget {
           create: (context) => OnboardingCubit(OnboardingRepositoryImpl()),
         ),
 
+        BlocProvider(create: (context) => sl<AuthBloc>(), lazy: false),
+
         BlocProvider(
-          create: (context) => sl<AuthBloc>(),
-          lazy: false,
+          create: (_) => HomeCubit(HomeRepositoryImpl())..getDoctors(),
         ),
       ],
       child: MaterialApp(
@@ -52,12 +55,8 @@ class MyApp extends StatelessWidget {
           Routes.transactionsScreen: (context) => TransactionsScreen(),
           Routes.doctorProfileScreen: (context) => DoctorProfileScreen(),
         },
-        initialRoute: Routes.signIn,
+        initialRoute: Routes.onboarding,
       ),
     );
   }
-         
-
-        }
-        
-   
+}
