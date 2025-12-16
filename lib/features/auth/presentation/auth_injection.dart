@@ -31,7 +31,7 @@ Future<void> initAuthDependencies() async {
     () => AuthBloc(
       signUpUseCase: sl(),
       signInUseCase: sl(),
-      sendEmailVerificationUseCase: sl(),
+      // sendEmailVerificationUseCase: sl(),
     ),
   );
 }

@@ -8,12 +8,12 @@ import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignUpUseCase signUpUseCase;
   final SignInUseCase signInUseCase;
-  final SendEmailVerificationUseCase sendEmailVerificationUseCase;
+  // final SendEmailVerificationUseCase sendEmailVerificationUseCase;
 
   AuthBloc({
     required this.signUpUseCase,
     required this.signInUseCase,
-    required this.sendEmailVerificationUseCase,
+    // required this.sendEmailVerificationUseCase,
   }) : super(AuthInitial()) {
     on<SignUpEvent>(_onSignUp);
     on<SignInEvent>(_onSignIn);
@@ -56,15 +56,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  Future<void> _onSendEmailVerification(
-    SendEmailVerificationEvent event,
-    Emitter<AuthState> emit,
-  ) async {
-    final result = await sendEmailVerificationUseCase();
+  // Future<void> _onSendEmailVerification(
+  //   SendEmailVerificationEvent event,
+  //   Emitter<AuthState> emit,
+  // ) async {
+  //   final result = await sendEmailVerificationUseCase();
 
-    result.fold(
-      (error) => emit(AuthError(message: error)),
-      (_) => emit(const EmailVerificationSent()),
-    );
-  }
+  //   result.fold(
+  //     (error) => emit(AuthError(message: error)),
+  //     (_) => emit(const EmailVerificationSent()),
+  //   );
+  // }
 }

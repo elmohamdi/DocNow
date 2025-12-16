@@ -1,6 +1,6 @@
 class Routes {
   static String onboarding = '/onboarding';
-   static String signIn = '/signIn';
+   static String signIn = '/signin';
   static String signup = '/signup';
   static String searchScreen = '/search';
   static String homeScreen = '/home';

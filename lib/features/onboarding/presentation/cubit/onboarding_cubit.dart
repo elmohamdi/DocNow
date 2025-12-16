@@ -4,7 +4,9 @@ import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_state
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingRepository onboardingRepository;
-  OnboardingCubit(this.onboardingRepository) : super(OnboardingState());
+  OnboardingCubit(this.onboardingRepository) : super(OnboardingInitial()) {
+    isNew(); 
+  }
 
   Future<void> isNew() async {
     try {
