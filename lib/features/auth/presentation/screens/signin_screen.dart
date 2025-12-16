@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
 import 'package:i_clinic/core/const/helper.dart';
-import 'package:i_clinic/core/const/routes.dart';
+import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_event.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
@@ -94,7 +94,6 @@ class _SigninScreenState extends State<SigninScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
                                   Text(
                                     'Email',
                                     style: TextStyle(
@@ -187,7 +186,9 @@ class _SigninScreenState extends State<SigninScreen> {
                                           password: _passwordController.text,
                                         ),
                                       );
+                                      Navigator.pushReplacementNamed(context, Routes.homeScreen);
                                     }
+                                    
                                   },
                             child: Container(
                               width: context.width * 0.9,
@@ -199,11 +200,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Center(
-                                child: isLoading
-                                    ? const CircularProgressIndicator(
-                                        color: Colors.white,
-                                      )
-                                    : Text(
+                                child: Text(
                                         'Sign in',
                                         style: TextStyle(
                                           color: AppColor.white,
@@ -260,8 +257,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             width: context.width * 0.9,
                             height: context.height * 0.055,
                             child: MaterialButton(
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -291,8 +287,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             width: context.width * 0.9,
                             height: context.height * 0.055,
                             child: MaterialButton(
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

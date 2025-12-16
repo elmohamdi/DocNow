@@ -1,4 +1,4 @@
-package com.example.DocNow
+package com.example.i_clinic
 
 import io.flutter.embedding.android.FlutterActivity
 

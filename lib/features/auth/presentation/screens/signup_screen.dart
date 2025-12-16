@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
 import 'package:i_clinic/core/const/helper.dart';
-import 'package:i_clinic/core/const/routes.dart';
+import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_event.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
@@ -279,6 +279,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                           password: _passwordController.text,
                                         ),
                                       );
+                                      Navigator.pushReplacementNamed(context, Routes.signIn);
+
                                     }
                                   },
                             child: Container(

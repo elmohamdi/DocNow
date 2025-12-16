@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }) : super(AuthInitial()) {
     on<SignUpEvent>(_onSignUp);
     on<SignInEvent>(_onSignIn);
-    on<SendEmailVerificationEvent>(_onSendEmailVerification);
+    // on<SendEmailVerificationEvent>(_onSendEmailVerification);
   }
 
   Future<void> _onSignUp(SignUpEvent event, Emitter<AuthState> emit) async {
@@ -31,7 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     result.fold((error) => emit(AuthError(message: error)), (user) {
 
-      add(SendEmailVerificationEvent());
+      // add(SendEmailVerificationEvent());
     });
   }
 
@@ -44,15 +44,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
 
     result.fold((error) => emit(AuthError(message: error)), (user) {
-      if (!user.isEmailVerified) {
-        emit(
-          const AuthError(
-            message: 'Please verify your email before signing in',
-          ),
-        );
-      } else {
-        emit(AuthSuccess(user: user));
-      }
+      // if (!user.isEmailVerified) {
+      //   emit(
+      //     const AuthError(
+      //       message: 'Please verify your email before signing in',
+      //     ),
+      //   );
+      // } else {
+      //   emit(AuthSuccess(user: user));
+      // }
     });
   }
 
