@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'docnow-2ab41.firebasestorage.app',
     iosBundleId: 'com.example.iClinic',
   );
+
 }

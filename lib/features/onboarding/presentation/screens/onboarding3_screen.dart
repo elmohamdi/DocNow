@@ -77,7 +77,10 @@ class Onboarding3Screen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.signup);
+                    Navigator.pushReplacementNamed(
+                      context, 
+                      Routes.signup
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -101,7 +104,10 @@ class Onboarding3Screen extends StatelessWidget {
 
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.signIn);
+                    Navigator.pushReplacementNamed(
+                      context, 
+                      Routes.signIn
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

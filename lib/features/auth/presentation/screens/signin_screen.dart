@@ -52,8 +52,6 @@ class _SigninScreenState extends State<SigninScreen> {
           }
         },
         builder: (context, state) {
-          final isLoading = state is AuthLoading;
-
           return Column(
             children: [
               Padding(padding: EdgeInsets.only(top: context.height * 0.15)),
@@ -105,7 +103,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                   const SizedBox(height: 8),
                                   TextFormField(
                                     controller: _emailController,
-                                    enabled: !isLoading,
+                                    // enabled: !isLoading,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -138,7 +136,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                   const SizedBox(height: 8),
                                   TextFormField(
                                     controller: _passwordController,
-                                    enabled: !isLoading,
+                                    // enabled: !isLoading,
                                     obscureText: !_isPasswordVisible,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -176,38 +174,36 @@ class _SigninScreenState extends State<SigninScreen> {
 
                           const SizedBox(height: 30),
                           MaterialButton(
-                            onPressed: isLoading
-                                ? null
-                                : () {
-                                    if (_formKey.currentState!.validate()) {
-                                      context.read<AuthBloc>().add(
-                                        SignInEvent(
-                                          email: _emailController.text.trim(),
-                                          password: _passwordController.text,
-                                        ),
-                                      );
-                                      Navigator.pushReplacementNamed(context, Routes.homeScreen);
-                                    }
-                                    
-                                  },
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                context.read<AuthBloc>().add(
+                                  SignInEvent(
+                                    email: _emailController.text.trim(),
+                                    password: _passwordController.text,
+                                  ),
+                                );
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  Routes.homeScreen,
+                                );
+                              }
+                            },
                             child: Container(
                               width: context.width * 0.9,
                               height: context.height * 0.055,
                               decoration: BoxDecoration(
-                                color: isLoading
-                                    ? AppColor.gray
-                                    : AppColor.main,
+                                color: AppColor.main,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Center(
                                 child: Text(
-                                        'Sign in',
-                                        style: TextStyle(
-                                          color: AppColor.white,
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                  'Sign in',
+                                  style: TextStyle(
+                                    color: AppColor.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

@@ -3,20 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_clinic/features/Home/data/home_repository_impl.dart';
 import 'package:i_clinic/features/Home/presentation/cubit/home_cubit.dart';
+import 'package:i_clinic/app_router.dart';
 import 'package:i_clinic/features/auth/presentation/auth_injection.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
 import 'package:i_clinic/features/auth/presentation/screens/signin_screen.dart';
-import 'package:i_clinic/features/auth/presentation/screens/signup_screen.dart';
-import 'package:i_clinic/features/Home/presentation/screens/home_screen.dart';
-import 'package:i_clinic/features/doctor_profile/presentation/screens/doctor_profile_screen.dart';
 import 'package:i_clinic/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
+import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_state.dart';
 import 'package:i_clinic/features/onboarding/presentation/screens/onboarding1_screen.dart';
-import 'package:i_clinic/features/profile/profile_screen.dart';
-import 'package:i_clinic/features/search/search_screen.dart';
-import 'package:i_clinic/features/transactions/transactions_screen.dart';
 import 'package:i_clinic/main_screen.dart';
-import 'package:i_clinic/core/routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,18 +40,40 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        routes: {
-          Routes.onboarding: (context) => const Onboarding1Screen(),
-          Routes.homeScreen: (context) => const HomeScreen(),
-          Routes.signup: (context) => const SignupScreen(),
-          Routes.signIn: (context) => const SigninScreen(),
-          Routes.searchScreen: (context) => SearchScreen(),
-          Routes.mainScreen: (context) => MainScreen(),
-          Routes.profileScreen: (context) => ProfileScreen(),
-          Routes.transactionsScreen: (context) => TransactionsScreen(),
-          Routes.doctorProfileScreen: (context) => DoctorProfileScreen(),
-        },
-        initialRoute: Routes.onboarding,
+        onGenerateRoute: AppRouter().generateRouter,
+        home: BlocBuilder<OnboardingCubit, OnboardingState>(
+          builder: (context, state) {
+            if (state is userIsNew) {
+              return const Onboarding1Screen();
+            }
+            if (state is OnboardingInitial) {
+              return const Scaffold(
+                body: Center(child: CircularProgressIndicator()),
+              );
+            }
+            if (state is userIsNotNew) {
+              return const MainScreen();
+            }
+            return BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (state is AuthInitial || state is AuthLoading) {
+                  return const Scaffold(
+                    body: Center(child: CircularProgressIndicator()),
+                  );
+                }
+                if (state is AuthUnauthenticated) {
+                  return const SigninScreen();
+                }
+                if (state is AuthSuccess) {
+                  return const MainScreen();
+                }
+                return const Scaffold(
+                  body: Center(child: Text('Something went wrong')),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

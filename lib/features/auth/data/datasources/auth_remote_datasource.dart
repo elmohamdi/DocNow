@@ -49,7 +49,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw Exception('User creation failed');
       }
 
-      await user.sendEmailVerification();
+      // await user.sendEmailVerification();
 
       final userModel = UserModel.fromFirebase(
         uid: user.uid,
