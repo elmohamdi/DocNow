@@ -43,17 +43,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 backgroundColor: Colors.red,
               ),
             );
-          } else if (state is EmailVerificationSent) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.message),
-                backgroundColor: Colors.green,
-              ),
-            );
-            Future.delayed(const Duration(seconds: 2), () {
-              Navigator.pushReplacementNamed(context, Routes.signIn);
-            });
+          } else if (state is AuthSuccess) {
+            Navigator.pushReplacementNamed(context, Routes.signIn);
           }
+          //  else if (state is EmailVerificationSent) {
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(
+          //       content: Text(state.message),
+          //       backgroundColor: Colors.green,
+          //     ),
+          //   );
+          //   Future.delayed(const Duration(seconds: 2), () {
+          //     Navigator.pushReplacementNamed(context, Routes.signIn);
+          //   });
+          // }
         },
         builder: (context, state) {
           final isLoading = state is AuthLoading;
@@ -98,7 +101,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: context.height * 0.02),
                           Form(
                             key: _formKey,
                             child: Column(
@@ -119,7 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                           fontSize: 20,
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      SizedBox(height: context.height * 0.01),
                                       TextFormField(
                                         controller: _nameController,
                                         enabled: !isLoading,
@@ -149,7 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   ),
                                 ),
 
-                                const SizedBox(height: 20),
+                                SizedBox(height: context.height * 0.02),
 
                                 Padding(
                                   padding: EdgeInsets.symmetric(
@@ -167,7 +170,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                           fontSize: 20,
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      SizedBox(height: context.height * 0.01),
                                       TextFormField(
                                         controller: _emailController,
                                         enabled: !isLoading,
@@ -201,7 +204,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   ),
                                 ),
 
-                                const SizedBox(height: 20),
+                                SizedBox(height: context.height * 0.02),
 
                                 Padding(
                                   padding: EdgeInsets.symmetric(
@@ -219,7 +222,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                           fontSize: 20,
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      SizedBox(height: context.height * 0.01),
                                       TextFormField(
                                         controller: _passwordController,
                                         enabled: !isLoading,
@@ -266,7 +269,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 30),
+                          SizedBox(height: context.height * 0.03),
                           MaterialButton(
                             onPressed: isLoading
                                 ? null
@@ -306,8 +309,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             ),
                           ),
-
-                          const SizedBox(height: 30),
+                          SizedBox(height: context.height * 0.02),
                           Row(
                             children: [
                               Expanded(
@@ -342,7 +344,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ],
                           ),
 
-                          const SizedBox(height: 20),
+                          SizedBox(height: context.height * 0.02),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -384,7 +386,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ],
                           ),
 
-                          const SizedBox(height: 20),
+                          SizedBox(height: context.height * 0.02),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
