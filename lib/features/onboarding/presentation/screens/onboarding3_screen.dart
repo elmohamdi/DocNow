@@ -81,6 +81,7 @@ class Onboarding3Screen extends StatelessWidget {
                       context, 
                       Routes.signup
                     );
+                    context.read<OnboardingCubit>().notNew();
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -108,6 +109,7 @@ class Onboarding3Screen extends StatelessWidget {
                       context, 
                       Routes.signIn
                     );
+                    context.read<OnboardingCubit>().notNew();
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

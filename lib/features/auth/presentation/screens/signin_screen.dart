@@ -184,7 +184,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                 );
                                 Navigator.pushReplacementNamed(
                                   context,
-                                  Routes.homeScreen,
+                                  Routes.mainScreen,
                                 );
                               }
                             },

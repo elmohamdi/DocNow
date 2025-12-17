@@ -40,8 +40,8 @@ flutter:
     - assets/icons/
 
 flutter_native_splash:
+  color: "#FFFFFF"
   image: assets/images/logo3.png
-  color: "#FFFFF"
   android: true
   ios: true
   web: false
