@@ -279,8 +279,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                           password: _passwordController.text,
                                         ),
                                       );
-                                      Navigator.pushReplacementNamed(context, Routes.signIn);
-
                                     }
                                   },
                             child: Container(
@@ -349,8 +347,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
-                                onTap: () {
-                                },
+                                onTap: () {},
                                 child: Container(
                                   width: context.width * 0.13,
                                   height: context.height * 0.06,
@@ -368,8 +365,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               SizedBox(width: context.width * 0.06),
                               InkWell(
-                                onTap: () {
-                                },
+                                onTap: () {},
                                 child: Container(
                                   width: context.width * 0.13,
                                   height: context.height * 0.06,

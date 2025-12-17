@@ -182,10 +182,6 @@ class _SigninScreenState extends State<SigninScreen> {
                                     password: _passwordController.text,
                                   ),
                                 );
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  Routes.mainScreen,
-                                );
                               }
                             },
                             child: Container(

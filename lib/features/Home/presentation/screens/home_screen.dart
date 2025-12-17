@@ -6,6 +6,8 @@ import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/core/widgets/message.dart';
 import 'package:i_clinic/features/Home/presentation/cubit/home_cubit.dart';
 import 'package:i_clinic/features/Home/presentation/widgets/top_doctor.dart';
+import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:i_clinic/features/auth/presentation/bloc/auth_event.dart';
 import 'package:i_clinic/features/search/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,9 +35,20 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: SvgPicture.asset('assets/images/logo2.svg'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: SvgPicture.asset('assets/images/logo2.svg'),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.read<AuthBloc>().add(SignOutEvent());
+                        },
+                        child: Icon(Icons.exit_to_app, color: AppColor.main),
+                      ),
+                    ],
                   ),
                   SizedBox(height: context.height * 0.01),
                   GestureDetector(
@@ -242,21 +255,20 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   if (state is HomeLoaded)
-                  GridView.builder(
-                    padding: EdgeInsets.symmetric(
-                      vertical: context.height * 0.01,
-                    ),
-                    itemCount: state.doctors.length,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                          SliverGridDelegateWithFixedCrossAxisCount(
+                    GridView.builder(
+                      padding: EdgeInsets.symmetric(
+                        vertical: context.height * 0.01,
+                      ),
+                      itemCount: state.doctors.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: context.height * 0.01,
                         crossAxisSpacing: context.width * 0.03,
                         childAspectRatio: 0.85,
                       ),
-                    itemBuilder: (context, index) {
+                      itemBuilder: (context, index) {
                         final doctor = state.doctors[index];
 
                         return TopDoctor(
@@ -266,8 +278,7 @@ class HomeScreen extends StatelessWidget {
                           price: doctor.price,
                         );
                       },
-                    
-                  ),
+                    ),
                 ],
               ),
             ),

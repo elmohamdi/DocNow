@@ -10,7 +10,6 @@ import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:i_clinic/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter().generateRouter,
-        home: AppStart()
+        home: AppStart(),
       ),
     );
   }

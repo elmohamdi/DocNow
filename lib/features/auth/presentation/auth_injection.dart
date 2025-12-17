@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:i_clinic/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:i_clinic/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:i_clinic/features/auth/domain/repositories/auth_repository.dart';
+import 'package:i_clinic/features/auth/domain/usecases/get_current_use_case.dart';
+import 'package:i_clinic/features/auth/domain/usecases/log_out_usecase.dart';
 import 'package:i_clinic/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:i_clinic/features/auth/domain/usecases/sign_up_usecase.dart';
 import 'package:i_clinic/features/auth/domain/usecases/verify_email_usecase.dart';
@@ -25,12 +27,16 @@ Future<void> initAuthDependencies() async {
 
   sl.registerLazySingleton(() => SignUpUseCase(sl()));
   sl.registerLazySingleton(() => SignInUseCase(sl()));
+  sl.registerLazySingleton(() => SignOutUseCase(sl()));
   sl.registerLazySingleton(() => SendEmailVerificationUseCase(sl()));
+  sl.registerLazySingleton(() => GetCurrentUserUseCase(sl()));
 
   sl.registerFactory(
     () => AuthBloc(
       signUpUseCase: sl(),
       signInUseCase: sl(),
+      signOutUseCase: sl(),
+      getCurrentUserUseCase: sl(),
       // sendEmailVerificationUseCase: sl(),
     ),
   );

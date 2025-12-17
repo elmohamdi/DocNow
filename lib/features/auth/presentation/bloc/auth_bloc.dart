@@ -1,22 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_clinic/features/auth/domain/usecases/get_current_use_case.dart';
+import 'package:i_clinic/features/auth/domain/usecases/log_out_usecase.dart';
 import 'package:i_clinic/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:i_clinic/features/auth/domain/usecases/sign_up_usecase.dart';
-import 'package:i_clinic/features/auth/domain/usecases/verify_email_usecase.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_event.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignUpUseCase signUpUseCase;
   final SignInUseCase signInUseCase;
+  final SignOutUseCase signOutUseCase;
+  final GetCurrentUserUseCase getCurrentUserUseCase;
   // final SendEmailVerificationUseCase sendEmailVerificationUseCase;
 
   AuthBloc({
     required this.signUpUseCase,
     required this.signInUseCase,
+    required this.signOutUseCase,
+    required this.getCurrentUserUseCase,
     // required this.sendEmailVerificationUseCase,
   }) : super(AuthInitial()) {
     on<SignUpEvent>(_onSignUp);
     on<SignInEvent>(_onSignIn);
+    on<SignOutEvent>(_onSignOut);
+    on<CheckAuthStatusEvent>(_onCheckAuthStatus);
     // on<SendEmailVerificationEvent>(_onSendEmailVerification);
   }
 
@@ -30,7 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
 
     result.fold((error) => emit(AuthError(message: error)), (user) {
-
+      emit(AuthSuccess(user: user));
       // add(SendEmailVerificationEvent());
     });
   }
@@ -44,6 +51,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
 
     result.fold((error) => emit(AuthError(message: error)), (user) {
+      emit(AuthSuccess(user: user));
       // if (!user.isEmailVerified) {
       //   emit(
       //     const AuthError(
@@ -56,6 +64,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
+  Future<void> _onSignOut(SignOutEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+
+    final result = await signOutUseCase();
+
+    result.fold(
+      (error) => emit(AuthError(message: error)),
+      (_) => emit(AuthUnauthenticated()),
+    );
+  }
+
+  Future<void> _onCheckAuthStatus(
+    CheckAuthStatusEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+
+    final result = await getCurrentUserUseCase();
+
+    result.fold((error) => emit(AuthUnauthenticated()), (user) {
+      if (user == null) {
+        emit(AuthUnauthenticated());
+      } else {
+        emit(AuthSuccess(user: user));
+      }
+    });
+  }
   // Future<void> _onSendEmailVerification(
   //   SendEmailVerificationEvent event,
   //   Emitter<AuthState> emit,

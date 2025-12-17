@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:i_clinic/features/auth/presentation/bloc/auth_event.dart';
 import 'package:i_clinic/features/auth/presentation/bloc/auth_state..dart';
 import 'package:i_clinic/features/auth/presentation/screens/signin_screen.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
@@ -20,17 +21,15 @@ class _AppStartScreenState extends State<AppStart> {
   void initState() {
     super.initState();
     context.read<OnboardingCubit>().isNew();
+    context.read<AuthBloc>().add(CheckAuthStatusEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
-
         if (state is OnboardingInitial) {
-          return const Scaffold(
-            body: Center(child: Text('onboarding')),
-          );
+          return const Scaffold(body: Center(child: Text('onboarding')));
         }
 
         if (state is userIsNew) {
@@ -40,10 +39,9 @@ class _AppStartScreenState extends State<AppStart> {
         if (state is userIsNotNew) {
           return BlocBuilder<AuthBloc, AuthState>(
             builder: (context, authState) {
-
               if (authState is AuthInitial || authState is AuthLoading) {
                 return const Scaffold(
-                  body: Center(child: Text("auth")),
+                  body: Center(child: CircularProgressIndicator()),
                 );
               }
 
@@ -62,9 +60,7 @@ class _AppStartScreenState extends State<AppStart> {
           );
         }
 
-        return const Scaffold(
-          body: Center(child: Text('Unexpected state')),
-        );
+        return const Scaffold(body: Center(child: Text('Unexpected state')));
       },
     );
   }
