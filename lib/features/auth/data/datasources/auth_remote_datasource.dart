@@ -9,10 +9,7 @@ abstract class AuthRemoteDataSource {
     required String password,
   });
 
-  Future<UserModel> signIn({
-    required String email,
-    required String password,
-  });
+  Future<UserModel> signIn({required String email, required String password});
 
   Future<void> sendEmailVerification();
 
@@ -59,9 +56,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         createdAt: DateTime.now(),
       );
 
-      await firestore.collection('users').doc(user.uid).set(
-            userModel.toFirestore(),
-          );
+      await firestore
+          .collection('users')
+          .doc(user.uid)
+          .set(userModel.toFirestore());
 
       return userModel;
     } on FirebaseAuthException catch (e) {

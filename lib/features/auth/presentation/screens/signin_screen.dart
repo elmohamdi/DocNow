@@ -82,7 +82,7 @@ class _SigninScreenState extends State<SigninScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: context.height * 0.03),
                           Form(
                             key: _formKey,
                             child: Padding(
@@ -103,12 +103,13 @@ class _SigninScreenState extends State<SigninScreen> {
                                   const SizedBox(height: 8),
                                   TextFormField(
                                     controller: _emailController,
-                                    // enabled: !isLoading,
+
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Please enter your email';
                                       }
+                                      // ignore: deprecated_member_use
                                       if (!RegExp(
                                         r'^[^@]+@[^@]+\.[^@]+',
                                       ).hasMatch(value)) {
@@ -124,7 +125,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                     ),
                                   ),
 
-                                  const SizedBox(height: 20),
+                                  SizedBox(height: context.height * 0.02),
                                   Text(
                                     'Password',
                                     style: TextStyle(
@@ -133,7 +134,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                       fontSize: 20,
                                     ),
                                   ),
-                                  const SizedBox(height: 8),
+                                  SizedBox(height: context.height * 0.01),
                                   TextFormField(
                                     controller: _passwordController,
                                     // enabled: !isLoading,
@@ -172,7 +173,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 30),
+                          SizedBox(height: context.height * 0.03),
                           MaterialButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
@@ -204,7 +205,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 30),
+                          SizedBox(height: context.height * 0.02),
 
                           Row(
                             children: [
@@ -240,7 +241,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ],
                           ),
 
-                          const SizedBox(height: 30),
+                          SizedBox(height: context.height * 0.02),
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
@@ -269,7 +270,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 15),
+                          SizedBox(height: context.height * 0.02),
 
                           Container(
                             decoration: BoxDecoration(
@@ -287,7 +288,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                     'Google',
                                     style: TextStyle(fontSize: 18),
                                   ),
-                                  const SizedBox(width: 10),
+                                  SizedBox(width: context.width * 0.02),
                                   SizedBox(
                                     width: context.width * 0.059,
                                     child: SvgPicture.asset(
@@ -299,7 +300,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ),
 
-                          const SizedBox(height: 20),
+                          SizedBox(height: context.height * 0.02),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
