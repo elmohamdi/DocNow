@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:i_clinic/core/const/app_color.dart';
 import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/core/utils/helper.dart';
+import 'package:i_clinic/features/doctor_profile/presentation/screens/doctor_profile_screen.dart';
 
 
 class TopDoctor extends StatelessWidget {
   TopDoctor({
     super.key,
+    required this.doctorId,
     required this.imageUrl,
     required this.name,
     required this.specialty,
     required this.price,
   });
 
+  String doctorId;
   String imageUrl;
   String name;
   String specialty;
@@ -63,7 +66,10 @@ class TopDoctor extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.doctorProfileScreen);
+                    Navigator.push(
+                      context,MaterialPageRoute(builder: (_) => DoctorProfileScreen(doctorID: doctorId,))
+                      );
+                    
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

@@ -272,6 +272,7 @@ class HomeScreen extends StatelessWidget {
                         final doctor = state.doctors[index];
 
                         return TopDoctor(
+                          doctorId: doctor.id,
                           imageUrl: 'assets/images/doctor1.png',
                           name: doctor.name,
                           specialty: doctor.speciality,
