@@ -26,8 +26,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
         case '/transactions':
         return MaterialPageRoute(builder: (_) => const TransactionsScreen());
-        case '/doctor_profile':
-        return MaterialPageRoute(builder: (_) =>  DoctorProfileScreen());
         case '/search':
         return MaterialPageRoute(builder: (_) =>  SearchScreen());
       default:

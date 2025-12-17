@@ -6,8 +6,8 @@ class BookDate extends StatelessWidget {
   BookDate({super.key, required this.day, required this.from, required this.to});
 
   String day;
-  String from;
-  String to;
+  int from;
+  int to;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +40,12 @@ class BookDate extends StatelessWidget {
           ),
           SizedBox(height: context.height * 0.015),
           Text(
-            from,
+            "${from}:00",
             style: TextStyle(fontSize: 12, color: AppColor.darkGray),
           ),
           Text('to', style: TextStyle(fontSize: 12, color: AppColor.darkGray)),
           Text(
-            to,
+            "${to}:00",
             style: TextStyle(fontSize: 12, color: AppColor.darkGray),
           ),
           SizedBox(height: context.height * 0.015),

@@ -30,6 +30,7 @@ class HomeRepositoryImpl extends HomeRepository {
 
       doctors.add(
         DoctorModel(
+          id: userData['uid'],
           name: userData['name'],
           speciality: detailsData['speciality'],
           price: (detailsData['price'] as num).toInt(),

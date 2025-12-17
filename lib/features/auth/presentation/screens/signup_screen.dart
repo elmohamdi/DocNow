@@ -279,7 +279,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                           password: _passwordController.text,
                                         ),
                                       );
-                                      Navigator.pushReplacementNamed(context, Routes.signIn);
+                                    
 
                                     }
                                   },
