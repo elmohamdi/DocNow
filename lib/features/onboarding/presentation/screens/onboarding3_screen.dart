@@ -133,32 +133,7 @@ class Onboarding3Screen extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 8),
-
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacementNamed(context, Routes.homeScreen);
-                context.read<OnboardingCubit>().notNew();
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Continue as',
-                    style: TextStyle(fontSize: 16, color: AppColor.black),
-                  ),
-
-                  Text(
-                    ' Guest',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColor.main,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            SizedBox(height: 8)
           ],
         ),
       ),

@@ -6,7 +6,7 @@ import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/core/widgets/message.dart';
 import 'package:i_clinic/features/doctor_profile/presentation/cubit/doctor_profile_cubit.dart';
 import 'package:i_clinic/features/doctor_profile/presentation/widgets/book_date.dart';
-import 'package:i_clinic/features/doctor_profile/presentation/screens/call_id.dart';
+import 'package:i_clinic/features/call/call_id.dart';
 import 'package:i_clinic/features/doctor_profile/presentation/widgets/doctor_detail.dart';
 
 // ignore: must_be_immutable

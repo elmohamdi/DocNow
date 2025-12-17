@@ -11,8 +11,6 @@ import 'package:i_clinic/features/doctor_profile/data/doctor_profile_repository_
 import 'package:i_clinic/features/doctor_profile/presentation/cubit/doctor_profile_cubit.dart';
 import 'package:i_clinic/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
-import 'package:i_clinic/main_screen.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:i_clinic/features/doctor_profile/presentation/screens/callPage.dart';
+import 'package:i_clinic/features/call/callPage.dart';
 
-import '../../../../core/const/app_color.dart';
+import '../../core/const/app_color.dart';
 
 class Callid extends StatelessWidget {
   Callid({super.key});
