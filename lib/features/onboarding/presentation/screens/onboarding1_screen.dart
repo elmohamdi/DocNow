@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:i_clinic/core/const/app_color.dart';
-import 'package:i_clinic/core/routes/routes.dart';
 import 'package:i_clinic/core/utils/helper.dart';
 import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_cubit.dart';
-import 'package:i_clinic/features/onboarding/presentation/cubit/onboarding_state.dart';
 import 'package:i_clinic/features/onboarding/presentation/screens/onboarding2_screen.dart';
 import 'package:i_clinic/features/onboarding/presentation/screens/onboarding3_screen.dart';
 

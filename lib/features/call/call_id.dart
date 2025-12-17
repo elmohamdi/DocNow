@@ -35,47 +35,49 @@ class Callid extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: AppColor.white,
-      body: Center(
-        child: Column(
-          children: [
-            Padding(padding: EdgeInsets.only(top: context.height * 0.1)),
-            SvgPicture.asset('assets/images/call_meeting.svg'),
-            Padding(padding: EdgeInsets.only(top: context.height * 0.05)),
-            SizedBox(
-              width: context.width * 0.9,
-              child: TextField(
-                controller: callIDController,
-                decoration: const InputDecoration(
-                  fillColor: AppColor.second,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Padding(padding: EdgeInsets.only(top: context.height * 0.1)),
+              SvgPicture.asset('assets/images/call_meeting.svg'),
+              Padding(padding: EdgeInsets.only(top: context.height * 0.05)),
+              SizedBox(
+                width: context.width * 0.9,
+                child: TextField(
+                  controller: callIDController,
+                  decoration: const InputDecoration(
+                    fillColor: AppColor.second,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                    labelText: 'Enter Room Code',
+                    labelStyle: TextStyle(color: AppColor.black),
                   ),
-                  labelText: 'Enter Room Code',
-                  labelStyle: TextStyle(color: AppColor.black),
                 ),
               ),
-            ),
-            Padding(padding: EdgeInsets.only(top: context.height * 0.03)),
-            ElevatedButton(
-              onPressed: () => _startCall(context),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.main,
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.width * 0.15,
-                  vertical: context.height * 0.015,
+              Padding(padding: EdgeInsets.only(top: context.height * 0.03)),
+              ElevatedButton(
+                onPressed: () => _startCall(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColor.main,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.width * 0.15,
+                    vertical: context.height * 0.015,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                child: const Text(
+                  'Join Call',
+                  style: TextStyle(fontSize: 18, color: AppColor.white),
                 ),
               ),
-              child: const Text(
-                'Join Call',
-                style: TextStyle(fontSize: 18, color: AppColor.white),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
